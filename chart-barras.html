@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>chart filter</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://use.fontawesome.com/bb7d217089.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+<body>
+<canvas id="myChart" width="400" height="250"></canvas>
+<input type="button" value="Add Data" onclick="adddata()">
+<input type="button" value="Add Data" onclick="adddata2()">
+<script type="text/javascript">
+var canvas = document.getElementById('myChart');
+var $a =20;
+  var $hola= "My First dataset";
+  var $el_array = [30, 59, 20, 81, 56, 55, 10];
+
+
+
+
+var data = {
+    labels: ["January", "February", "Marjch", "April", "May", "June", "July"],
+  
+    datasets: [
+        {
+            label: $hola,
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: $el_array,
+        }
+
+    ]
+};
+
+var option = {
+    scales: {
+    yAxes:[{
+            stacked:true,
+        gridLines: {
+            display:true,
+          color:"rgba(255,99,132,0.2)"
+        }
+    }],
+    xAxes:[{
+            gridLines: {
+            display:false
+        }
+    }]
+  }
+};
+function checkAdult(age) {
+  return age >= 30;
+  
+}
+
+function adddata(){
+var ages = [32, 33, 16, 40, 98, 11, 23, 47];
+
+myBarChart.data.labels = ['1am', '2am', '3am', '4am','a'];
+myBarChart.data.datasets[0].data = ages.filter(checkAdult);;
+myBarChart.update();
+};
+
+
+var myBarChart = Chart.Bar(canvas,{
+data:data,
+options:option
+});
+
+
+
+</script>
+
+
+
